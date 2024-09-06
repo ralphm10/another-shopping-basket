@@ -1,7 +1,5 @@
 package org.example
 
-import java.lang.IllegalArgumentException
-
 class ShoppingBasket(var items: MutableList<GroceryItem> = mutableListOf()) {
     fun isEmpty(): Boolean = items.isEmpty()
 
@@ -10,9 +8,7 @@ class ShoppingBasket(var items: MutableList<GroceryItem> = mutableListOf()) {
     }
 
     fun remove(item: GroceryItem) {
-        if (!items.contains(item)) {
-            throw IllegalArgumentException("${item.description} not in basket")
-        }
+        require(items.contains(item)) {"${item.description} not in basket"}
         items.remove(item)
     }
 }
