@@ -1,7 +1,9 @@
 package org.example
 
 import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.assertThrows
 import kotlin.test.Test
+import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
@@ -37,5 +39,16 @@ class ShoppingBasketTest {
 
         assertTrue(basket.isEmpty())
         assertFalse(basket.items.contains(anItem))
+    }
+
+    @Test
+    fun shouldThrowErrorIfItemNotInBasket() {
+        val missingItem = GroceryItem("lettuce")
+
+        val exception = assertThrows<IllegalArgumentException> {
+            basket.remove(missingItem)
+        }
+
+        assertEquals("${missingItem.description} not in basket", exception.message)
     }
 }
