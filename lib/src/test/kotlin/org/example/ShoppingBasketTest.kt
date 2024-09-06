@@ -31,6 +31,14 @@ class ShoppingBasketTest {
     }
 
     @Test
+    fun shouldAddAGroceryItemWithQuantityGreaterThanOne() {
+        val anItemWithQuantityGreaterThanOne = GroceryItem("doritos", 2)
+        basket.add(anItemWithQuantityGreaterThanOne)
+
+        assertEquals(2, basket.items.first().quantity)
+    }
+
+    @Test
     fun shouldThrowErrorWhenAddingDuplicateItem() {
         basket.add(anItem)
         val exception = assertThrows<IllegalArgumentException> {
