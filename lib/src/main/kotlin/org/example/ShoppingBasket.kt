@@ -14,4 +14,9 @@ class ShoppingBasket(var items: MutableList<GroceryItem> = mutableListOf()) {
     }
 
     private fun containsItem(item: GroceryItem) = items.contains(item)
+
+    fun updateQuantity(item: GroceryItem, quantity: Int) {
+        val foundItem = items.find { it.description == item.description }
+        foundItem?.quantity = quantity
+    }
 }

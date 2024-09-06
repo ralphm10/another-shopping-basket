@@ -1,3 +1,3 @@
 package org.example
 
-data class GroceryItem(val description: String, val quantity: Int = 1)
+data class GroceryItem(val description: String, var quantity: Int = 1)
