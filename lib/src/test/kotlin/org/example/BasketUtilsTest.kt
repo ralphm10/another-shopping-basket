@@ -1,22 +1,28 @@
 package org.example
 
+import org.junit.jupiter.api.BeforeEach
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
 class BasketUtilsTest {
+    private lateinit var utils: BasketUtils
+    private lateinit var basket: ShoppingBasket
+    private lateinit var anItem: GroceryItem
+
+    @BeforeEach
+    fun setup() {
+        utils = BasketUtils()
+        basket = ShoppingBasket()
+        anItem = GroceryItem("pizza", "7.99", 2)
+    }
 
     @Test
     fun shouldPrintMessageIfBasketIsEmpty() {
-        val basket = ShoppingBasket()
-        val utils = BasketUtils()
         assertEquals("your basket is empty", utils.printBasket(basket))
     }
 
     @Test
     fun shouldPrintHeaderAndBasketContentsWithPriceAndSubtotal() {
-        val utils = BasketUtils()
-        val basket = ShoppingBasket()
-        val anItem = GroceryItem("pizza", "7.99", 2)
         val anotherItem = GroceryItem("red wine", "9.49")
 
         basket.add(anItem)
