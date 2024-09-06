@@ -1,5 +1,7 @@
 package org.example
 
+import java.math.BigDecimal
+
 class ShoppingBasket(var items: MutableList<GroceryItem> = mutableListOf()) {
     fun isEmpty(): Boolean = items.isEmpty()
 
@@ -26,4 +28,8 @@ class ShoppingBasket(var items: MutableList<GroceryItem> = mutableListOf()) {
     private fun verifyItemInBasket(item: GroceryItem) {
         require(containsItem(item)) { "${item.description} not in basket" }
     }
+
+    fun itemCount(): Int = items.size
+
+    fun total(): BigDecimal = items.sumOf { it.subTotal() }
 }
