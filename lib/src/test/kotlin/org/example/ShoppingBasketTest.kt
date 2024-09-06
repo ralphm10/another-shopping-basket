@@ -31,6 +31,17 @@ class ShoppingBasketTest {
     }
 
     @Test
+    fun shouldThrowErrorWhenAddingDuplicateItem() {
+        val anItem = GroceryItem("pizza")
+
+        basket.add(anItem)
+        val exception = assertThrows<IllegalArgumentException> {
+            basket.add(anItem)
+        }
+        assertEquals("${anItem.description} already in basket", exception.message)
+    }
+
+    @Test
     fun shouldRemoveAGroceryItem() {
         val anItem = GroceryItem("pizza")
 
