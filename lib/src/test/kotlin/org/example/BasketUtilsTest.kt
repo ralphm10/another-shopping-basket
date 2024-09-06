@@ -13,12 +13,13 @@ class BasketUtilsTest {
     }
 
     @Test
-    fun shouldPrintHeaderAndBasketContentsWithPrice() {
+    fun shouldPrintHeaderAndBasketContentsWithPriceAndSubtotal() {
         val utils = BasketUtils()
         val basket = ShoppingBasket()
-        val anItem = GroceryItem("pizza", "7.99")
+        val anItem = GroceryItem("pizza", "7.99", 2)
         basket.add(anItem)
 
-        assertEquals("Item || Quantity || Unit Price\npizza || 1 || 7.99", utils.printBasket(basket))
+        assertEquals("Item || Quantity || Unit Price || Subtotal\n" +
+                "pizza || 2 || 7.99 || 15.98", utils.printBasket(basket))
     }
 }
