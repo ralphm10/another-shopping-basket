@@ -22,4 +22,16 @@ class ShoppingBasketTest {
         assertFalse(basket.isEmpty())
         assertTrue(basket.items.contains(anItem))
     }
+
+    @Test
+    fun shouldRemoveAGroceryItem() {
+        val basket = ShoppingBasket()
+        val anItem = GroceryItem("pizza")
+
+        basket.add(anItem)
+        basket.remove(anItem)
+
+        assertTrue(basket.isEmpty())
+        assertFalse(basket.items.contains(anItem))
+    }
 }

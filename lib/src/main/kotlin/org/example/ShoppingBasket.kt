@@ -6,4 +6,8 @@ class ShoppingBasket(var items: MutableList<GroceryItem> = mutableListOf()) {
     fun add(item: GroceryItem) {
         items.add(item)
     }
+
+    fun remove(item: GroceryItem) {
+        items.remove(item)
+    }
 }
