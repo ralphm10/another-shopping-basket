@@ -9,10 +9,12 @@ import kotlin.test.assertTrue
 
 class ShoppingBasketTest {
     private lateinit var basket: ShoppingBasket
+    private lateinit var anItem: GroceryItem
 
     @BeforeEach
     fun setup() {
         basket = ShoppingBasket()
+        anItem = GroceryItem("pizza")
     }
 
     @Test
@@ -22,8 +24,6 @@ class ShoppingBasketTest {
 
     @Test
     fun shouldAddAGroceryItem() {
-        val anItem = GroceryItem("pizza")
-
         basket.add(anItem)
 
         assertFalse(basket.isEmpty())
@@ -32,8 +32,6 @@ class ShoppingBasketTest {
 
     @Test
     fun shouldThrowErrorWhenAddingDuplicateItem() {
-        val anItem = GroceryItem("pizza")
-
         basket.add(anItem)
         val exception = assertThrows<IllegalArgumentException> {
             basket.add(anItem)
@@ -43,8 +41,6 @@ class ShoppingBasketTest {
 
     @Test
     fun shouldRemoveAGroceryItem() {
-        val anItem = GroceryItem("pizza")
-
         basket.add(anItem)
         basket.remove(anItem)
 
