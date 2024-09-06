@@ -1,20 +1,25 @@
 package org.example
 
+import org.junit.jupiter.api.BeforeEach
 import kotlin.test.Test
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
 class ShoppingBasketTest {
+    private lateinit var basket: ShoppingBasket
+
+    @BeforeEach
+    fun setup() {
+        basket = ShoppingBasket()
+    }
 
     @Test
     fun shouldBeEmptyWhenInitialized() {
-        val basket = ShoppingBasket()
         assertTrue(basket.isEmpty())
     }
 
     @Test
     fun shouldAddAGroceryItem() {
-        val basket = ShoppingBasket()
         val anItem = GroceryItem("pizza")
 
         basket.add(anItem)
@@ -25,7 +30,6 @@ class ShoppingBasketTest {
 
     @Test
     fun shouldRemoveAGroceryItem() {
-        val basket = ShoppingBasket()
         val anItem = GroceryItem("pizza")
 
         basket.add(anItem)
