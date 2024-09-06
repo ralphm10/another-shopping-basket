@@ -16,6 +16,7 @@ class ShoppingBasket(var items: MutableList<GroceryItem> = mutableListOf()) {
     private fun containsItem(item: GroceryItem) = items.contains(item)
 
     fun updateQuantity(item: GroceryItem, quantity: Int) {
+        require(containsItem(item)) {"${item.description} not in basket"}
         val foundItem = items.find { it.description == item.description }
         foundItem?.quantity = quantity
     }

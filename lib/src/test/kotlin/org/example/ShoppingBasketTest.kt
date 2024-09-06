@@ -47,6 +47,17 @@ class ShoppingBasketTest {
     }
 
     @Test
+    fun shouldThrowErrorIfUpdatingItemNotInBasket() {
+        val missingItem = GroceryItem("lettuce")
+
+        val exception = assertThrows<IllegalArgumentException> {
+            basket.updateQuantity(missingItem, 5)
+        }
+
+        assertEquals("${missingItem.description} not in basket", exception.message)
+    }
+
+    @Test
     fun shouldThrowErrorWhenAddingDuplicateItem() {
         basket.add(anItem)
         val exception = assertThrows<IllegalArgumentException> {
@@ -65,7 +76,7 @@ class ShoppingBasketTest {
     }
 
     @Test
-    fun shouldThrowErrorIfItemNotInBasket() {
+    fun shouldThrowErrorIfRemovingItemNotInBasket() {
         val missingItem = GroceryItem("lettuce")
 
         val exception = assertThrows<IllegalArgumentException> {
