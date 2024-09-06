@@ -14,7 +14,7 @@ class ShoppingBasketTest {
     @BeforeEach
     fun setup() {
         basket = ShoppingBasket()
-        anItem = GroceryItem("pizza")
+        anItem = GroceryItem("pizza", "7.99")
     }
 
     @Test
@@ -32,7 +32,7 @@ class ShoppingBasketTest {
 
     @Test
     fun shouldAddAGroceryItemWithQuantityGreaterThanOne() {
-        val anItemWithQuantityGreaterThanOne = GroceryItem("doritos", 2)
+        val anItemWithQuantityGreaterThanOne = GroceryItem("doritos", "1.99", 2)
         basket.add(anItemWithQuantityGreaterThanOne)
 
         assertEquals(2, basket.items.first().quantity)
@@ -48,7 +48,7 @@ class ShoppingBasketTest {
 
     @Test
     fun shouldThrowErrorIfUpdatingItemNotInBasket() {
-        val missingItem = GroceryItem("lettuce")
+        val missingItem = GroceryItem("lettuce", "0.59")
 
         val exception = assertThrows<IllegalArgumentException> {
             basket.updateQuantity(missingItem, 5)
@@ -87,7 +87,7 @@ class ShoppingBasketTest {
 
     @Test
     fun shouldThrowErrorIfRemovingItemNotInBasket() {
-        val missingItem = GroceryItem("lettuce")
+        val missingItem = GroceryItem("lettuce", "0.59")
 
         val exception = assertThrows<IllegalArgumentException> {
             basket.remove(missingItem)
