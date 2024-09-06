@@ -15,8 +15,6 @@ class ShoppingBasket(var items: MutableList<GroceryItem> = mutableListOf()) {
         items.remove(item)
     }
 
-    private fun containsItem(item: GroceryItem) = items.contains(item)
-
     fun updateQuantity(item: GroceryItem, quantity: Int) {
         verifyItemInBasket(item)
         require(quantity > 0) {"Quantity must be greater than 0"}
@@ -25,11 +23,13 @@ class ShoppingBasket(var items: MutableList<GroceryItem> = mutableListOf()) {
         foundItem?.quantity = quantity
     }
 
+    fun itemCount(): Int = items.size
+
+    fun total(): BigDecimal = items.sumOf { it.subTotal() }
+
     private fun verifyItemInBasket(item: GroceryItem) {
         require(containsItem(item)) { "${item.description} not in basket" }
     }
 
-    fun itemCount(): Int = items.size
-
-    fun total(): BigDecimal = items.sumOf { it.subTotal() }
+    private fun containsItem(item: GroceryItem) = items.contains(item)
 }
