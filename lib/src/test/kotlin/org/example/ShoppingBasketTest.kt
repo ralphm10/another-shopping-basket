@@ -58,6 +58,16 @@ class ShoppingBasketTest {
     }
 
     @Test
+    fun shouldThrowErrorForIncorrectQuantity() {
+        basket.add(anItem)
+
+        val exception = assertThrows<IllegalArgumentException> {
+            basket.updateQuantity(anItem, -1)
+        }
+        assertEquals("Quantity must be greater than 0", exception.message)
+    }
+
+    @Test
     fun shouldThrowErrorWhenAddingDuplicateItem() {
         basket.add(anItem)
         val exception = assertThrows<IllegalArgumentException> {

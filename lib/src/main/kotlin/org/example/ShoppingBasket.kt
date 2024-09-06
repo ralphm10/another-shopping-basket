@@ -17,6 +17,8 @@ class ShoppingBasket(var items: MutableList<GroceryItem> = mutableListOf()) {
 
     fun updateQuantity(item: GroceryItem, quantity: Int) {
         verifyItemInBasket(item)
+        require(quantity > 0) {"Quantity must be greater than 0"}
+
         val foundItem = items.find { it.description == item.description }
         foundItem?.quantity = quantity
     }
