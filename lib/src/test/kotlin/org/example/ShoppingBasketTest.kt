@@ -32,7 +32,7 @@ class ShoppingBasketTest {
 
     @Test
     fun shouldAddAGroceryItemWithQuantityGreaterThanOne() {
-        val anItemWithQuantityGreaterThanOne = GroceryItem("doritos", "1.99", 2)
+        val anItemWithQuantityGreaterThanOne = GroceryItem("doritos", "1.99", "0.2", 2)
         basket.add(anItemWithQuantityGreaterThanOne)
 
         assertEquals(2, basket.items.first().quantity)

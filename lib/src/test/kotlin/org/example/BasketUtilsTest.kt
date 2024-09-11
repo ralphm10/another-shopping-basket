@@ -13,7 +13,7 @@ class BasketUtilsTest {
     fun setup() {
         utils = BasketUtils()
         basket = ShoppingBasket()
-        anItem = GroceryItem("pizza", "7.99", 2)
+        anItem = GroceryItem("pizza", "7.99", "0.2")
     }
 
     @Test
@@ -32,5 +32,15 @@ class BasketUtilsTest {
                 "pizza || 2 || 7.99 || 15.98\n" +
                 "red wine || 1 || 9.49 || 9.49\n\n" +
                 "Basket total is 25.47 for 2 items", utils.printBasket(basket))
+    }
+
+    @Test
+    fun shouldDisplay20PercentVatOnAnItem() {
+        val vattableItem = GroceryItem("lager", "10.00", "0.2")
+        basket.add(vattableItem)
+
+        assertEquals("Item || Quantity || Unit Price ex Vat || Unit Price inc Vat || Subtotal\n" +
+                "lager || 1 || 10.00 || 12.00 || 12.00\n\n" +
+                "Basket total is 12.00 for 1 items", utils.printBasket(basket))
     }
 }
