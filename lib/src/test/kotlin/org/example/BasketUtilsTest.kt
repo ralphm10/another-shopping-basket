@@ -36,9 +36,9 @@ class BasketUtilsTest {
     }
 
     @Test
-    fun shouldDisplayPriceAndSubtotalIncludingVatForVattableItem() {
-        val vattableItem = GroceryItem("lager", "10.00", "0.2")
-        basket.add(vattableItem)
+    fun shouldDisplayPriceAndSubtotalIncludingVatForVatItem() {
+        val vatItem = GroceryItem("lager", "10.00", "0.2")
+        basket.add(vatItem)
 
         assertEquals("Item || Quantity || Unit Price ex Vat || Unit Price inc Vat || Subtotal\n" +
                 "lager || 1 || 10.00 || 12.00 || 12.00\n\n" +
@@ -46,9 +46,9 @@ class BasketUtilsTest {
     }
 
     @Test
-    fun shouldDisplayPriceAndSubtotalIncludingVatForNonVattableItem() {
-        val vattableItem = GroceryItem("lettuce", "0.50", )
-        basket.add(vattableItem)
+    fun shouldDisplayPriceAndSubtotalIncludingVatForNonVatItem() {
+        val noVatItem = GroceryItem("lettuce", "0.50", )
+        basket.add(noVatItem)
 
         assertEquals("Item || Quantity || Unit Price ex Vat || Unit Price inc Vat || Subtotal\n" +
                 "lettuce || 1 || 0.50 || 0.50 || 0.50\n\n" +
